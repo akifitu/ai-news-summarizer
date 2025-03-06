@@ -1,36 +1,98 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# News Summarizer
+
+A web application for those who don't use social media but want to stay informed about trending topics and news. This application fetches trending topics from Twitter and news from Reddit, organizes them, and provides AI-powered summaries of related news articles.
+
+## Features
+
+- View trending topics from Twitter
+- Browse the latest news from Reddit's r/news
+- Filter news by trending topics
+- Get AI-generated summaries of news articles using OpenAI
+- Cached results for faster access using Upstash Redis
+- Vector similarity search for related articles using Upstash Vector
+
+## Tech Stack
+
+- **Frontend Framework**: Next.js with TypeScript
+- **Styling**: Tailwind CSS
+- **API Integration**: Twitter API, Reddit API
+- **AI Summarization**: OpenAI GPT-3.5
+- **Database & Caching**: Upstash Redis
+- **Vector Storage**: Upstash Vector
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
 
+- Node.js (v16+)
+- npm or yarn
+- Twitter Developer Account (for API access)
+- OpenAI API Key
+- Upstash Redis & Vector Accounts
+
+### Installation
+
+1. Clone the repository:
+```bash
+git clone https://github.com/yourusername/news-summarizer.git
+cd news-summarizer
+```
+
+2. Install dependencies:
+```bash
+npm install
+# or
+yarn install
+```
+
+3. Set up environment variables:
+   - Copy `.env.local.example` to `.env.local`
+   - Fill in your API keys and credentials
+
+```bash
+cp .env.local.example .env.local
+```
+
+4. Run the development server:
 ```bash
 npm run dev
 # or
 yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+5. Open [http://localhost:3000](http://localhost:3000) with your browser to see the application.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## API Configuration
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Twitter API Setup
 
-## Learn More
+1. Create a Twitter Developer account at [developer.twitter.com](https://developer.twitter.com/)
+2. Create a new application and get your API keys
+3. Enable elevated access to use the v1.1 API endpoints for trends
 
-To learn more about Next.js, take a look at the following resources:
+### Reddit API Access
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+The application uses Reddit's public JSON API. No authentication is required for basic read operations, but for production use, you should:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+1. Create a Reddit account
+2. Register an application at [reddit.com/prefs/apps](https://www.reddit.com/prefs/apps)
+3. Use the generated client ID and secret for authentication
 
-## Deploy on Vercel
+### Upstash Setup
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+1. Create accounts for [Upstash Redis](https://upstash.com/redis) and [Upstash Vector](https://upstash.com/vector)
+2. Create databases for both services
+3. Copy the REST URLs and tokens to your `.env.local` file
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Deployment
+
+This Next.js application can be deployed using Vercel:
+
+1. Push your code to GitHub
+2. Import the project to Vercel
+3. Set up the environment variables
+4. Deploy
+
+## License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
