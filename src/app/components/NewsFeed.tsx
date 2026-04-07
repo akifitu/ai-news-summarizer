@@ -296,7 +296,10 @@ export default function NewsFeed() {
                             // Create a temporary element to show the summary
                             const summaryEl = document.createElement('div');
                             summaryEl.className = 'mt-4 p-3 bg-gray-50 rounded text-sm border border-gray-200';
-                            summaryEl.innerHTML = `<strong>Özet:</strong> ${data.summary || 'Özet oluşturulamadı.'}`;
+                            const labelEl = document.createElement('strong');
+                            labelEl.textContent = 'Özet:';
+                            summaryEl.appendChild(labelEl);
+                            summaryEl.appendChild(document.createTextNode(` ${data.summary || 'Özet oluşturulamadı.'}`));
                             
                             // Find the content paragraph and append the summary after it
                             const button = event.currentTarget;
